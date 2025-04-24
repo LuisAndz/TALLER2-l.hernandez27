@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta de animales</title>
+</head>
+<body>
+    <h1>¿Qué sonido hace el animal?</h1>
+    <form method="get" action="{{ url_for('animales.como_hace_web')}}">
+        <label for="animal">Ingresa un animal:</label>
+        <input type="text" id="animal" name="animal" required>
+        <button type="submit">Consultar</button>
+    </form>
+
+    {% if resultado %}
+        <h2>Resultado:</h2>
+        <p><strong>{{ resultado['El animal'] }}:</strong> {{ resultado['hace'] }}</p>
+    {% elif error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
